@@ -115,11 +115,11 @@ export default {
       }
     },
     async consultarPedidos() {
-      const response = await fetch("${process.env.VUE_APP_API_URL}/pedidos");
+      const response = await fetch(`${process.env.VUE_APP_API_URL}/pedidos`);
       this.listaPedidosRealizados = await response.json();
     },
     async consultarStatusPedido() {
-      const response = await fetch("${process.env.VUE_APP_API_URL}/status_pedido");
+      const response = await fetch(`${process.env.VUE_APP_API_URL}/status_pedido`);
       this.listaStatusPedido = await response.json();
     },
     async atualizarStatusPedido(event, idPedido) {
