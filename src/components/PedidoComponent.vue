@@ -113,12 +113,12 @@ export default {
   },
   methods: {
     async getTiposSwitch() {
-      const response = await fetch("http://localhost:3000/tipos_switch");
+      const response = await fetch("${process.env.VUE_APP_API_URL}/tipos_switch");
       const dados = await response.json();
       this.listaTiposSwitch = dados;
     },
     async getOpcionais() {
-      const response = await fetch("http://localhost:3000/opcionais");
+      const response = await fetch("${process.env.VUE_APP_API_URL}/opcionais");
       const dados = await response.json();
       this.listaAcessorios = dados.acessorios;
       this.listaCabos = dados.cabos;
@@ -153,7 +153,7 @@ export default {
         statusId: 5,
       };
 
-      const req = await fetch("http://localhost:3000/pedidos", {
+      const req = await fetch("${process.env.VUE_APP_API_URL}/pedidos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dadosPedido),

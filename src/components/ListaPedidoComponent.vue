@@ -115,17 +115,17 @@ export default {
       }
     },
     async consultarPedidos() {
-      const response = await fetch("http://localhost:3000/pedidos");
+      const response = await fetch("${process.env.VUE_APP_API_URL}/pedidos");
       this.listaPedidosRealizados = await response.json();
     },
     async consultarStatusPedido() {
-      const response = await fetch("http://localhost:3000/status_pedido");
+      const response = await fetch("${process.env.VUE_APP_API_URL}/status_pedido");
       this.listaStatusPedido = await response.json();
     },
     async atualizarStatusPedido(event, idPedido) {
       const idPedidoAtualizado = event.target.value;
       const atualizacaoJson = JSON.stringify({ statusId: idPedidoAtualizado });
-      await fetch(`http://localhost:3000/pedidos/${idPedido}`, {
+      await fetch(`${process.env.VUE_APP_API_URL}/pedidos/${idPedido}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: atualizacaoJson,
@@ -146,7 +146,7 @@ export default {
         return;
       }
 
-      await fetch(`http://localhost:3000/pedidos/${pedido.id}`, {
+      await fetch(`${process.env.VUE_APP_API_URL}/pedidos/${pedido.id}`, {
         method: "DELETE",
       });
       await this.consultarPedidos();
